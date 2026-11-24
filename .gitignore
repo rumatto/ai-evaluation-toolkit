@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Generated reports
+*.html
+*.log
+
+# Local environment
+.env
+.env.*
+.DS_Store

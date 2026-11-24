@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "quality-gates.v1",
+  "gates": {
+    "decisionAccuracy": 1
+  },
+  "requireDefined": true
+}

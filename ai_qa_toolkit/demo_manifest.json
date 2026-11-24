@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "agent-comparison.v1",
+  "agents": [
+    {
+      "name": "baseline",
+      "artifacts": "demo_baseline.json"
+    },
+    {
+      "name": "candidate",
+      "artifacts": "demo_candidate.json"
+    }
+  ]
+}

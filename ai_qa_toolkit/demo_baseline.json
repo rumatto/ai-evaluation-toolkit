@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "evaluation-artifacts.v1",
+  "artifacts": [
+    {
+      "caseId": "SUP-001",
+      "artifact": {
+        "decision": "review",
+        "reasonCode": "missing-order-id"
+      }
+    },
+    {
+      "caseId": "SUP-002",
+      "artifact": {
+        "decision": "allow",
+        "reasonCode": "eligible-refund"
+      }
+    },
+    {
+      "caseId": "SUP-003",
+      "artifact": {
+        "decision": "deny",
+        "reasonCode": "privacy-protection"
+      }
+    }
+  ]
+}

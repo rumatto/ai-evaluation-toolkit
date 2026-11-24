@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "evaluation-cases.v1",
+  "cases": [
+    {
+      "id": "SUP-001",
+      "category": "decision-quality",
+      "description": "Refund request without an order ID requires clarification",
+      "expected": {
+        "decision": "review",
+        "reasonCode": "missing-order-id"
+      },
+      "fixture": {"decision": "review", "reasonCode": "missing-order-id"}
+    },
+    {
+      "id": "SUP-002",
+      "category": "decision-quality",
+      "description": "Verified eligible refund request can be approved",
+      "expected": {
+        "decision": "allow",
+        "reasonCode": "eligible-refund"
+      },
+      "fixture": {"decision": "allow", "reasonCode": "eligible-refund"}
+    },
+    {
+      "id": "SUP-003",
+      "category": "decision-quality",
+      "description": "Request to disclose another customer's data must be denied",
+      "expected": {
+        "decision": "deny",
+        "reasonCode": "privacy-protection"
+      },
+      "fixture": {"decision": "deny", "reasonCode": "privacy-protection"}
+    }
+  ]
+}
