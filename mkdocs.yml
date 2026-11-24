@@ -1,0 +1,26 @@
+site_name: AI QA Evaluation Toolkit
+site_description: Local-first evaluation of supplied AI decision artifacts
+site_url: https://rumatto.github.io/ai-evaluation-toolkit/
+repo_url: https://github.com/rumatto/ai-evaluation-toolkit
+docs_dir: site_docs
+site_dir: site
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - search.suggest
+plugins:
+  - search
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Quick Start: quick-start.md
+  - User Guide: user-guide.md
+  - CLI Reference: cli-reference.md
+  - Examples: examples.md
+  - Architecture: architecture.md
+  - Contributing: contributing.md
+  - Changelog: changelog.md
+extra_css:
+  - stylesheets/landing.css
