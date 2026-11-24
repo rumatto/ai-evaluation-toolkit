@@ -49,4 +49,8 @@ The output-safety regression suite covers protected input files, symbolic and ha
 
 ## Development and release
 
-This README is a **proposed public-source candidate**, not an approved public repository or proof of distribution rights. A clean repository, complete exact-file inventory, security/privacy review, dependency/license review and owner authorization are required before publication. Current release status: **HOLD**.
+The standalone Scope B source repository and its documentation are public. Publication of source and documentation does **not** constitute independent release-archive clearance, integration certification, or proof of distribution rights for third-party material. A separately approved release package remains **HOLD** pending its own checks.
+
+## Documentation
+
+The [documentation site](https://rumatto.github.io/ai-evaluation-toolkit/) is built with MkDocs Material from `site_docs/` using `mkdocs.yml`. The GitHub Actions workflow builds it with `--strict` and deploys the generated `site/` output. To preview locally, install `docs-requirements.txt` and run `python -m mkdocs serve`.
