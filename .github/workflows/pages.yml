@@ -1,18 +1,23 @@
 name: Deploy documentation
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,5 +31,31 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Wait for Pages artifact metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in {1..20}; do
+            if gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts" \
+              --jq '.artifacts[] | select(.name == "github-pages" and .expired == false) | .id' \
+              | grep -Eq '^[0-9]+$'; then
+              echo "Pages artifact is visible to GitHub Actions API"
+              exit 0
+            fi
+            echo "Artifact not yet visible (attempt ${attempt}/20)"
+            sleep 3
+          done
+          echo "::error::Pages artifact was not visible after 60 seconds"
+          exit 1
       - id: deployment
         uses: actions/deploy-pages@v4
